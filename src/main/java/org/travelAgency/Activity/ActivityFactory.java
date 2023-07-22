@@ -1,6 +1,4 @@
-package org.example.Activity;
-
-import org.example.Destination.Destination;
+package org.travelAgency.Activity;
 
 import java.util.HashMap;
 import java.util.Map;

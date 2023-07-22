@@ -1,4 +1,4 @@
-package org.example.exceptionHandler;
+package org.travelAgency.exceptionHandler;
 
 public class TravelAgencyServiceException extends Exception {
     private String title;

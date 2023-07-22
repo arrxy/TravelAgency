@@ -1,7 +1,7 @@
-package org.example.Activity;
+package org.travelAgency.Activity;
 
-import org.example.Destination.Destination;
-import org.example.exceptionHandler.PassengerOverflowException;
+import org.travelAgency.Destination.Destination;
+import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class Activity {
     private String name;

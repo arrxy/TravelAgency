@@ -1,4 +1,4 @@
-package org.example.Passenger;
+package org.travelAgency.Passenger;
 
 public class Passenger {
     protected String name;

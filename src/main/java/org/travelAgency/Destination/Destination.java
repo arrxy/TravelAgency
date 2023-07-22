@@ -1,7 +1,7 @@
-package org.example.Destination;
+package org.travelAgency.Destination;
 
-import org.example.Activity.Activity;
-import org.example.Activity.ActivityFactory;
+import org.travelAgency.Activity.Activity;
+import org.travelAgency.Activity.ActivityFactory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package org.example.Passenger;
+package org.travelAgency.Passenger;
 
-import org.example.Activity.Activity;
-import org.example.Activity.ActivityFactory;
-import org.example.exceptionHandler.InsufficientBalanceException;
-import org.example.exceptionHandler.PassengerOverflowException;
+import org.travelAgency.Activity.Activity;
+import org.travelAgency.Activity.ActivityFactory;
+import org.travelAgency.exceptionHandler.InsufficientBalanceException;
+import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class PremiumPassenger extends Passenger implements PassengerSignUp{
     public PremiumPassenger(String name, int passengerNumber) {

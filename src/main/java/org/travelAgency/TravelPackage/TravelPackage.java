@@ -1,11 +1,10 @@
-package org.example.TravelPackage;
+package org.travelAgency.TravelPackage;
 
-import org.example.Activity.Activity;
-import org.example.Destination.Destination;
-import org.example.Destination.DestinationFactory;
-import org.example.Passenger.Passenger;
-import org.example.Passenger.StandardPassenger;
-import org.example.exceptionHandler.PassengerOverflowException;
+import org.travelAgency.Activity.Activity;
+import org.travelAgency.Destination.Destination;
+import org.travelAgency.Destination.DestinationFactory;
+import org.travelAgency.Passenger.Passenger;
+import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 import java.util.*;
 
