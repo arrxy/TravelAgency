@@ -14,4 +14,10 @@ public class PremiumPassenger extends Passenger implements PassengerSignUp{
         Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
         activity.signUp();
     }
+    public void print() {
+        System.out.println("PREMIUM PASSENGER");
+        System.out.println("---------------");
+        System.out.println("Passenger Name: " + this.name);
+        System.out.println("Passenger Number: " + this.passengerNumber);
+    }
 }

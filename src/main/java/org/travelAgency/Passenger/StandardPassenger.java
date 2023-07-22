@@ -35,4 +35,11 @@ public class StandardPassenger extends Passenger implements PassengerSignUp {
             this.balance += amount;
         }
     }
+    public void print() {
+        System.out.println("STANDARD PASSENGER");
+        System.out.println("---------------");
+        System.out.println("Passenger Name: " + this.name);
+        System.out.println("Passenger Number: " + this.passengerNumber);
+        System.out.println("Passenger Number: " + this.balance);
+    }
 }

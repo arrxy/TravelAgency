@@ -3,6 +3,7 @@ package org.travelAgency.TravelPackage;
 import org.travelAgency.Activity.Activity;
 import org.travelAgency.Destination.Destination;
 import org.travelAgency.Destination.DestinationManager;
+import org.travelAgency.Passenger.GoldPassenger;
 import org.travelAgency.Passenger.Passenger;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
@@ -46,5 +47,17 @@ public class TravelPackage {
         destinationList.add(DestinationManager.spinUpActivityOrReturnExisting(destination));
     }
 
+    public void printItenary() {
+        System.out.println("DESTINATIONS");
+        for (Destination destination: this.destinationList) {
+            destination.print();
+        }
+    }
 
+    public void printPassengers() {
+        System.out.println("PASSENGERS");
+        for (Passenger passenger: this.passengerList) {
+            passenger.print();
+        }
+    }
 }

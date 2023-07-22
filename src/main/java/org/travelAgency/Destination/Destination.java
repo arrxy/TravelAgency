@@ -33,4 +33,10 @@ public class Destination {
         activityList.add(activity);
     }
 
+    public void print() {
+        System.out.println("Destination Name : " + this.getName());
+        for (Activity activity: this.getActivityList()) {
+            activity.print();
+        }
+    }
 }

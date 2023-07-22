@@ -16,12 +16,9 @@ public class ActivityManager {
         return activityMonitor.get(activity.getName());
     }
 
-//    public static void removeActivity(Activity activity) {
-//        activity = spinUpActivityOrReturnExisting(activity);
-//        if (activityMonitor.containsKey(activity.getName())) {
-//            activityMonitor.remove(activity.getName());
-//        }
-//        Destination destination = DestinationManager.spinUpActivityOrReturnExisting(activity.getDestination());
-//        destination.removeActivity(activity);
-//    }
+    /**TODO
+     * REMOVE ACTIVITY
+     * STEP 1) From Destination remove Activity
+     * STEP 2) From activityMonitor remove Activity Key
+     * */
 }

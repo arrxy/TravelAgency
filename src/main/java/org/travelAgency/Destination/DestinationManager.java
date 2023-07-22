@@ -12,4 +12,10 @@ public class DestinationManager {
         destinationMonitor.put(destination.getName(), new Destination(destination));
         return destinationMonitor.get(destination.getName());
     }
+    /**TODO
+     * REMOVE DESTINATION
+     * STEP 1) From Destination remove Travel Package
+     * STEP 2) Iterate through list of activities and call remove Activity function
+     * STEP 3) Remove Destination key from destinationMonitor
+     * */
 }

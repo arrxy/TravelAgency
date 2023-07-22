@@ -36,4 +36,11 @@ public class GoldPassenger extends Passenger implements PassengerSignUp {
     public void recharge(int amount) {
         this.balance += amount;
     }
+    public void print() {
+        System.out.println("GOLD PASSENGER");
+        System.out.println("---------------");
+        System.out.println("Passenger Name: " + this.name);
+        System.out.println("Passenger Number: " + this.passengerNumber);
+        System.out.println("Passenger Number: " + this.balance);
+    }
 }
