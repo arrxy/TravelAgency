@@ -3,7 +3,7 @@ package org.travelAgency.Destination;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DestinationFactory {
+public class DestinationManager {
     private static Map<String, Destination> destinationMonitor = new HashMap<>();
     public static Destination spinUpActivityOrReturnExisting(Destination destination) {
         if (destinationMonitor.containsKey(destination.getName())) {

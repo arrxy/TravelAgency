@@ -1,7 +1,7 @@
 package org.travelAgency.Passenger;
 
 import org.travelAgency.Activity.Activity;
-import org.travelAgency.Activity.ActivityFactory;
+import org.travelAgency.Activity.ActivityManager;
 import org.travelAgency.exceptionHandler.InsufficientBalanceException;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
@@ -11,7 +11,7 @@ public class PremiumPassenger extends Passenger implements PassengerSignUp{
     }
     @Override
     public void signUpForActivity(Activity a) throws InsufficientBalanceException, PassengerOverflowException {
-        Activity activity = ActivityFactory.spinUpActivityOrReturnExisting(a);
+        Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
         activity.signUp();
     }
 }

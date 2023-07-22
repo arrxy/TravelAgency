@@ -2,7 +2,7 @@ package org.travelAgency.TravelPackage;
 
 import org.travelAgency.Activity.Activity;
 import org.travelAgency.Destination.Destination;
-import org.travelAgency.Destination.DestinationFactory;
+import org.travelAgency.Destination.DestinationManager;
 import org.travelAgency.Passenger.Passenger;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
@@ -43,7 +43,7 @@ public class TravelPackage {
         for (Activity activity: destination.getActivityList()) {
             activityList.add(activity.getName());
         }
-        destinationList.add(DestinationFactory.spinUpActivityOrReturnExisting(destination));
+        destinationList.add(DestinationManager.spinUpActivityOrReturnExisting(destination));
     }
 
 

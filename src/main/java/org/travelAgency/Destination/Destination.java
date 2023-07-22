@@ -1,14 +1,13 @@
 package org.travelAgency.Destination;
 
 import org.travelAgency.Activity.Activity;
-import org.travelAgency.Activity.ActivityFactory;
+import org.travelAgency.Activity.ActivityManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Destination {
     private String name;
-
     private List<Activity> activityList;
 
     public Destination(String name, List<Activity> activityList) {
@@ -19,7 +18,7 @@ public class Destination {
         this.name = d.getName();
         this.activityList = new ArrayList<>();
         for (Activity activity: d.getActivityList()) {
-            this.activityList.add(ActivityFactory.spinUpActivityOrReturnExisting(activity));
+            this.activityList.add(ActivityManager.spinUpActivityOrReturnExisting(activity));
         }
     }
     public String getName() {

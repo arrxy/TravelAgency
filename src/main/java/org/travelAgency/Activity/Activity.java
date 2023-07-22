@@ -1,6 +1,7 @@
 package org.travelAgency.Activity;
 
 import org.travelAgency.Destination.Destination;
+import org.travelAgency.Destination.DestinationManager;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class Activity {
@@ -31,12 +32,11 @@ public class Activity {
     }
 
 
-    public Activity(String name, String description, int cost, int capacity, Destination destination) {
+    public Activity(String name, String description, int cost, int capacity) {
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.capacity = capacity;
-        this.destination = destination;
     }
 
     public Activity(Activity activity) {
@@ -47,15 +47,22 @@ public class Activity {
         this.destination = activity.destination;
     }
     public void signUp() throws PassengerOverflowException {
-        if (capacity > 1) {
+        if (capacity >= 1) {
             synchronized (this) {
-                if (capacity > 1) {
+                if (capacity >= 1) {
                     capacity -= 1;
                 }
             }
         } else {
             throw new PassengerOverflowException("Activity Full");
         }
+    }
+
+    public void attachToDestination(Destination d) {
+        Destination destinationFromInp = DestinationManager.spinUpActivityOrReturnExisting(d);
+        destinationFromInp.addActivity(this);
+        this.destination = DestinationManager.spinUpActivityOrReturnExisting(d);
+
     }
 
 }
