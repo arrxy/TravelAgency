@@ -19,12 +19,18 @@ public class GoldPassenger extends Passenger implements PassengerSignUp {
         this.balance = balance;
     }
 
-    @Override
-    public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
-        Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
+    private void checkEligibilityForSignUp(Activity a, TravelPackage p) throws InvalidActivityException {
         if (!p.containsActivity(a)) {
             throw new InvalidActivityException("Invalid Activity For The Selected Package");
         }
+        if (!p.isPassengerEnrolled(this)) {
+            throw new InvalidActivityException("Passenger not yet enrolled in package");
+        }
+    }
+    @Override
+    public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
+        Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
+        checkEligibilityForSignUp(activity, p);
         double discountFactor = 0.9;
         double activityPrice = activity.getCost() * discountFactor;
         if (balance > activityPrice) {

@@ -2,7 +2,6 @@ package org.travelAgency.Activity;
 
 import org.travelAgency.Destination.Destination;
 import org.travelAgency.Destination.DestinationManager;
-import org.travelAgency.Passenger.Passenger;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class Activity {

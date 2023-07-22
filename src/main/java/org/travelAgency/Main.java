@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) throws PassengerOverflowException, InsufficientBalanceException, InvalidActivityException {
         StandardPassenger ps1 = new StandardPassenger("ps1", 1, 1000.0);
         StandardPassenger ps2 = new StandardPassenger("ps2", 2, 1000.0);
-
         GoldPassenger g1 = new GoldPassenger("g1", 3, 1000.0);
         GoldPassenger g2 = new GoldPassenger("g2", 4, 1000.0);
 
