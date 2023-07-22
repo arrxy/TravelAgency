@@ -10,9 +10,9 @@ public class Destination {
     private String name;
     private List<Activity> activityList;
 
-    public Destination(String name, List<Activity> activityList) {
+    public Destination(String name) {
         this.name = name;
-        this.activityList = activityList;
+        this.activityList = new ArrayList<>();
     }
     public Destination (Destination d) {
         this.name = d.getName();

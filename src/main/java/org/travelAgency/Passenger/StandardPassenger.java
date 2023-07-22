@@ -2,7 +2,9 @@ package org.travelAgency.Passenger;
 
 import org.travelAgency.Activity.Activity;
 import org.travelAgency.Activity.ActivityManager;
+import org.travelAgency.TravelPackage.TravelPackage;
 import org.travelAgency.exceptionHandler.InsufficientBalanceException;
+import org.travelAgency.exceptionHandler.InvalidActivityException;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class StandardPassenger extends Passenger implements PassengerSignUp {
@@ -15,7 +17,10 @@ public class StandardPassenger extends Passenger implements PassengerSignUp {
         this.balance = balance;
     }
     @Override
-    public void signUpForActivity(Activity a) throws InsufficientBalanceException, PassengerOverflowException {
+    public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
+        if (!p.containsActivity(a)) {
+            throw new InvalidActivityException("Invalid Activity For The Selected Package");
+        }
         Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
         double activityPrice = activity.getCost();
         if (balance >= activityPrice) {
@@ -36,6 +41,7 @@ public class StandardPassenger extends Passenger implements PassengerSignUp {
         }
     }
     public void print() {
+        System.out.println("---------------");
         System.out.println("STANDARD PASSENGER");
         System.out.println("---------------");
         System.out.println("Passenger Name: " + this.name);

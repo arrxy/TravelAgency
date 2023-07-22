@@ -1,6 +1,7 @@
 package org.travelAgency.TravelPackage;
 
 import org.travelAgency.Activity.Activity;
+import org.travelAgency.Activity.ActivityManager;
 import org.travelAgency.Destination.Destination;
 import org.travelAgency.Destination.DestinationManager;
 import org.travelAgency.Passenger.GoldPassenger;
@@ -23,6 +24,8 @@ public class TravelPackage {
         this.capacity = capacity;
         this.destinationList = new ArrayList<>();
         this.passengerList = new ArrayList<>();
+        this.activityList = new HashSet<>();
+        this.destinations = new HashSet<>();
     }
 
     public void addPassenger(Passenger passenger) throws PassengerOverflowException {
@@ -45,6 +48,11 @@ public class TravelPackage {
             activityList.add(activity.getName());
         }
         destinationList.add(DestinationManager.spinUpActivityOrReturnExisting(destination));
+    }
+
+    public boolean containsActivity(Activity activity) {
+        activity = ActivityManager.spinUpActivityOrReturnExisting(activity);
+        return activityList.contains(activity.getName());
     }
 
     public void printItenary() {

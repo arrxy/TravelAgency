@@ -2,6 +2,7 @@ package org.travelAgency.Activity;
 
 import org.travelAgency.Destination.Destination;
 import org.travelAgency.Destination.DestinationManager;
+import org.travelAgency.Passenger.Passenger;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
 public class Activity {
@@ -72,7 +73,7 @@ public class Activity {
         Case 1: When Destination is already attached -> return. Don't make any changes
         Case 2: When Destination is null -> Attach current Object to the Destination
         * */
-        if (this.destination == null) {
+        if (this.destination != null) {
             return;
         }
         Destination destinationFromInp = DestinationManager.spinUpActivityOrReturnExisting(d);
