@@ -2,8 +2,7 @@ package org.travelAgency.Passenger;
 
 import org.travelAgency.Activity.Activity;
 import org.travelAgency.Activity.ActivityManager;
-import org.travelAgency.Passenger.Passenger;
-import org.travelAgency.Passenger.PassengerSignUp;
+import org.travelAgency.Extra.EligibilityChecks;
 import org.travelAgency.TravelPackage.TravelPackage;
 import org.travelAgency.exceptionHandler.InsufficientBalanceException;
 import org.travelAgency.exceptionHandler.InvalidActivityException;
@@ -18,24 +17,18 @@ public class StandardPassenger extends Passenger implements PassengerSignUp {
         super(name, passengerNumber);
         this.balance = balance;
     }
-    private void checkEligibilityForSignUp(Activity a, TravelPackage p) throws InvalidActivityException {
-        if (!p.containsActivity(a)) {
-            throw new InvalidActivityException("Invalid Activity For The Selected Package");
-        }
-        if (!p.isPassengerEnrolled(this)) {
-            throw new InvalidActivityException("Passenger not yet enrolled in package");
-        }
-    }
+
     @Override
     public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
         Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
-        checkEligibilityForSignUp(activity, p);
+        EligibilityChecks.checkEligibilityForPassengerSignUp(activity, p, this);
         double activityPrice = activity.getCost();
         if (balance >= activityPrice) {
             synchronized (this) {
                 if (balance >= activityPrice) {
                     activity.signUp();
                     balance -= activityPrice;
+                    this.activityList.add(new ActivityPair(activity, activityPrice));
                 }
             }
         } else {
@@ -54,6 +47,12 @@ public class StandardPassenger extends Passenger implements PassengerSignUp {
         System.out.println("---------------");
         System.out.println("Passenger Name: " + this.name);
         System.out.println("Passenger Number: " + this.passengerNumber);
-        System.out.println("Passenger Number: " + this.balance);
+        System.out.println("Passenger balance: " + this.balance);
+        System.out.println(" ------- ACTIVITIES ------- ");
+        for (ActivityPair activityPair: this.activityList) {
+            activityPair.activity.print();
+            System.out.println("  PRICE PAID: " + activityPair.price);
+        }
+        System.out.println(" --------------------- ");
     }
 }

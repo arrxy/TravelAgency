@@ -58,6 +58,12 @@ public class TravelPackage {
         return activityList.contains(activity.getName());
     }
 
+    public void printPackageDetails() {
+        System.out.println("    --- PACKAGE DETAILS --- ");
+        System.out.println("Name: " + this.name);
+
+    }
+
     public void printItenary() {
         System.out.println("DESTINATIONS");
         for (Destination destination: this.destinationList) {
