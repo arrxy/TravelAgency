@@ -10,10 +10,12 @@ public class Destination {
     private String name;
     private List<Activity> activityList;
 
+
     public Destination(String name) {
         this.name = name;
         this.activityList = new ArrayList<>();
     }
+
     public Destination (Destination d) {
         this.name = d.getName();
         this.activityList = new ArrayList<>();
@@ -21,6 +23,7 @@ public class Destination {
             this.activityList.add(ActivityManager.spinUpActivityOrReturnExisting(activity));
         }
     }
+
     public String getName() {
         return name;
     }
@@ -36,7 +39,9 @@ public class Destination {
     public void print() {
         System.out.println("Destination Name : " + this.getName());
         for (Activity activity: this.getActivityList()) {
-            activity.print();
+            if (activity.getCapacity() > 0) {
+                activity.print();
+            }
         }
     }
 }

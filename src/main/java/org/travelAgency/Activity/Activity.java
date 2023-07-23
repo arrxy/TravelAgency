@@ -47,11 +47,6 @@ public class Activity {
         this.destination = activity.destination;
     }
 
-    public void print() {
-        System.out.println("- Activity: " + this.getName());
-        System.out.println("  Description: " + this.getDescription());
-        System.out.println("  Cost: " + this.getCost());
-    }
     public void signUp() throws PassengerOverflowException {
         /*
         Double-checking lock for making it thread safe.
@@ -79,5 +74,13 @@ public class Activity {
         destinationFromInp.addActivity(this);
         this.destination = DestinationManager.spinUpActivityOrReturnExisting(d);
     }
+
+    public void print() {
+        System.out.println("- Activity: " + this.getName());
+        System.out.println("  Description: " + this.getDescription());
+        System.out.println("  Cost: " + this.getCost());
+        System.out.println("  Capacity: " + this.getCapacity());
+    }
+
 
 }

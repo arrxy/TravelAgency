@@ -47,21 +47,32 @@ public class TravelPackage {
         }
         destination = DestinationManager.spinUpActivityOrReturnExisting(destination);
         for (Activity activity: destination.getActivityList()) {
-            activityList.add(activity.getName());
+            this.activityList.add(activity.getName());
         }
-        destinationList.add(destination);
-        destinations.add(destination.getName());
+        this.destinationList.add(destination);
+        this.destinations.add(destination.getName());
     }
 
+    /*
+    * CHECK FUNCTIONS
+    * */
     public boolean containsActivity(Activity activity) {
         activity = ActivityManager.spinUpActivityOrReturnExisting(activity);
-        return activityList.contains(activity.getName());
+        return this.activityList.contains(activity.getName());
     }
 
+    public boolean isPassengerEnrolled(Passenger p) {
+        return this.passengerList.contains(p);
+    }
+
+    /*
+    * PRINT FUNCTIONS
+    * */
     public void printPackageDetails() {
         System.out.println("    --- PACKAGE DETAILS --- ");
         System.out.println("Name: " + this.name);
-
+        System.out.println("Capacity: " + this.capacity);
+        System.out.println("Current Enrolled: " + this.passengerList.size());
     }
 
     public void printItenary() {
@@ -76,9 +87,5 @@ public class TravelPackage {
         for (Passenger passenger: this.passengerList) {
             passenger.print();
         }
-    }
-
-    public boolean isPassengerEnrolled(Passenger p) {
-        return this.passengerList.contains(p);
     }
 }
