@@ -8,6 +8,7 @@ import java.util.List;
 public class Passenger {
     protected String name;
     protected int passengerNumber;
+    public double balance;
     protected List<ActivityPair> activityList;
 
     public Passenger (String name, int passengerNumber) {
@@ -21,7 +22,7 @@ public class Passenger {
         System.out.println("Passenger Number: " + this.passengerNumber);
     }
 
-    protected class ActivityPair {
+    protected static class ActivityPair {
         Activity activity;
         double price;
         ActivityPair(Activity activity, double price) {

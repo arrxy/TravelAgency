@@ -1,15 +1,14 @@
 package org.travelAgency.Passenger;
 
 import org.travelAgency.Activity.Activity;
-import org.travelAgency.Activity.ActivityManager;
-import org.travelAgency.Extra.EligibilityChecks;
 import org.travelAgency.TravelPackage.TravelPackage;
 import org.travelAgency.exceptionHandler.InsufficientBalanceException;
 import org.travelAgency.exceptionHandler.InvalidActivityException;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
-public class GoldPassenger extends Passenger implements PassengerSignUp {
-    private double balance;
+public class GoldPassenger extends Passenger {
+    private static int discountPercentage = 10;
+    private PassengerSignUp passengerSignUp;
 
     public double getBalance() {
         return balance;
@@ -18,26 +17,11 @@ public class GoldPassenger extends Passenger implements PassengerSignUp {
     public GoldPassenger(String name, int passengerNumber, double balance) {
         super(name, passengerNumber);
         this.balance = balance;
+        passengerSignUp = new PassengerSignUpWithBalance();
     }
 
-
-    @Override
     public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
-        Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
-        EligibilityChecks.checkEligibilityForPassengerSignUp(activity, p, this);
-        double discountFactor = 0.9;
-        double activityPrice = activity.getCost() * discountFactor;
-        if (balance > activityPrice) {
-            synchronized (StandardPassenger.class) {
-                if (balance > activityPrice) {
-                    activity.signUp();
-                    balance -= activityPrice;
-                    this.activityList.add(new ActivityPair(activity, activityPrice));
-                }
-            }
-        } else {
-            throw new InsufficientBalanceException("Insufficient balance for customer");
-        }
+        passengerSignUp.signUpForActivity(a, p, this, discountPercentage);
     }
     public void recharge(int amount) {
         this.balance += amount;

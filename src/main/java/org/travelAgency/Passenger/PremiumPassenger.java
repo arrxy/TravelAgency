@@ -1,23 +1,22 @@
 package org.travelAgency.Passenger;
 
 import org.travelAgency.Activity.Activity;
-import org.travelAgency.Activity.ActivityManager;
-import org.travelAgency.Extra.EligibilityChecks;
 import org.travelAgency.TravelPackage.TravelPackage;
 import org.travelAgency.exceptionHandler.InsufficientBalanceException;
 import org.travelAgency.exceptionHandler.InvalidActivityException;
 import org.travelAgency.exceptionHandler.PassengerOverflowException;
 
-public class PremiumPassenger extends Passenger implements PassengerSignUp {
+public class PremiumPassenger extends Passenger {
+    private PassengerSignUp passengerSignUp;
     public PremiumPassenger(String name, int passengerNumber) {
+
         super(name, passengerNumber);
+        passengerSignUp = new PassengerSignUpWithoutBalance();
     }
-    @Override
+
     public void signUpForActivity(Activity a, TravelPackage p) throws InsufficientBalanceException, PassengerOverflowException, InvalidActivityException {
-        Activity activity = ActivityManager.spinUpActivityOrReturnExisting(a);
-        EligibilityChecks.checkEligibilityForPassengerSignUp(activity, p, this);
-        activity.signUp();
-        this.activityList.add(new ActivityPair(activity, 0.0));
+        passengerSignUp.signUpForActivity(a, p, this);
+
     }
     public void print() {
         System.out.println("---------------");
